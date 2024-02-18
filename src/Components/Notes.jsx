@@ -1,19 +1,20 @@
 import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-
 import { useNavigate } from "react-router";
 import { deleteit } from "./Redux/SliceContent";
 
+import TimeAgo from "timeago-react";
+
 function Notes() {
-    let data =  useSelector((state)=>state.note)
-    let dispatch=useDispatch()
-    
-let handleEdit=(index)=>{
+  let data = useSelector((state) => state.note);
+  let dispatch = useDispatch();
+
+  let handleEdit = (index) => {
     Navigate(`/edit/${index}`);
-}
+  };
   let handleDelete = (index) => {
-   dispatch(deleteit(index))
+    dispatch(deleteit(index));
   };
   let Navigate = useNavigate();
   return (
@@ -32,15 +33,15 @@ let handleEdit=(index)=>{
             <>
               <div class="p-4 rounded-lg ">
                 <div key={i}>
-                  <div class=" w-72 h-52 rounded-xl shadow-xl hover:translate-y-2 transition-all bg-white dark:bg-gray-800">
+                  <div class=" w-72 h-60 rounded-xl shadow-xl hover:translate-y-2 transition-all bg-white dark:bg-gray-800">
                     <div className="p-6 text-lg   flex ">
                       <div className="overflow-y-scroll scrollbar-hide  w-44">
                         {e.title}
                       </div>
                       <i
                         className="fa fa-edit pl-20 hover:translate-y-1 transition-all pointer   "
-                        onClick={() => {handleEdit(i,e.note)
-                         
+                        onClick={() => {
+                          handleEdit(i, e.note);
                         }}
                       ></i>
                       <i
