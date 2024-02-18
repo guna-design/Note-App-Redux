@@ -1,20 +1,21 @@
-import React, { useContext } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
+
 
 import { useNavigate } from "react-router";
 import { deleteit } from "./Redux/SliceContent";
 
-import TimeAgo from "timeago-react";
+import TimeAgo from 'timeago-react';
 
 function Notes() {
-  let data = useSelector((state) => state.note);
-  let dispatch = useDispatch();
-
-  let handleEdit = (index) => {
+    let data =  useSelector((state)=>state.note)
+    let dispatch=useDispatch()
+    
+let handleEdit=(index)=>{
     Navigate(`/edit/${index}`);
-  };
+}
   let handleDelete = (index) => {
-    dispatch(deleteit(index));
+   dispatch(deleteit(index))
   };
   let Navigate = useNavigate();
   return (
@@ -40,8 +41,8 @@ function Notes() {
                       </div>
                       <i
                         className="fa fa-edit pl-20 hover:translate-y-1 transition-all pointer   "
-                        onClick={() => {
-                          handleEdit(i, e.note);
+                        onClick={() => {handleEdit(i,e.note)
+                         
                         }}
                       ></i>
                       <i
@@ -49,11 +50,23 @@ function Notes() {
                         onClick={() => handleDelete(i)}
                       ></i>
                     </div>
+                    
 
-                    <div class="p-4  overflow-auto  h-32 ...">{e.note}</div>
+                    <div class="p-4  overflow-auto  h-32 ...">{e.note}
+                    
+
+                    </div>
+                    <span className="float-end p-2 font-serif ">
+              <TimeAgo
+datetime={new Date()}
+  locale='en_US.ts'
+/>
+              </span>
                   </div>
+
                 </div>
               </div>
+
             </>
           );
         })}
